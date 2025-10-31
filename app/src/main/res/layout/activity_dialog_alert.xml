@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:padding="24dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- Glowing / flashing warning icon -->
+        <ImageView
+            android:id="@+id/imgWarningIcon"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/ic_warning"
+            android:contentDescription="@string/warning_icon_desc" />
+
+        <!-- FIRE DETECTED Title -->
+        <TextView
+            android:id="@+id/tvFireDetected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fire_detected"
+            android:textColor="#FF1744"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:shadowColor="#00FFFF"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="20"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Alert Level -->
+        <TextView
+            android:id="@+id/tvAlertLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/alert_level_high"
+            android:textColor="#FF1744"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:shadowColor="#00FFFF"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="15"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Recommended Actions -->
+        <TextView
+            android:id="@+id/tvRecommendedActions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/recommended_actions"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Call Emergency -->
+        <Button
+            android:id="@+id/btnCallEmergency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/call_emergency"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#FF1744"
+            android:textStyle="bold"
+            android:padding="14dp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- View Location -->
+        <Button
+            android:id="@+id/btnViewLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/view_location"
+            android:textColor="#000000"
+            android:backgroundTint="#00FFFF"
+            android:textStyle="bold"
+            android:padding="14dp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- View Map -->
+        <Button
+            android:id="@+id/btnViewMap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/view_map"
+            android:textColor="#000000"
+            android:backgroundTint="#00FFFF"
+            android:textStyle="bold"
+            android:padding="14dp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Mark as Resolved -->
+        <Button
+            android:id="@+id/btnMarkResolved"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/mark_resolved"
+            android:textColor="#000000"
+            android:backgroundTint="#FFD600"
+            android:textStyle="bold"
+            android:padding="14dp" />
+
+    </LinearLayout>
+</ScrollView>

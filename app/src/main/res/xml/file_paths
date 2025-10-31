@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Example: Allow sharing from app's cache or files directory -->
+    <cache-path
+        name="shared_images"
+        path="." />
+    <files-path
+        name="shared_files"
+        path="." />
+</paths>
