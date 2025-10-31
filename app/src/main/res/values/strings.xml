@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">FlameLog</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="high_risk">High Risk</string>
+    <string name="temperature_details">Temperature: 39°C</string>
+    <string name="high">HIGH</string>
+    <string name="incident_icon">Incident icon</string>
+
+
+    <!-- Alert Levels for Spinner -->
+    <string-array name="alert_levels">
+        <item>All</item>
+        <item>High</item>
+        <item>Medium</item>
+        <item>Low</item>
+    </string-array>
+    <string name="fire_detected">🔥 FIRE DETECTED!</string>
+    <string name="alert_level_high">ALERT LEVEL: HIGH</string>
+    <string name="recommended_actions">Recommended Actions:\n- Turn off gas supply\n- Call Fire Department\n- Evacuate immediately</string>
+    <string name="call_emergency">CALL EMERGENCY</string>
+    <string name="view_location">VIEW LOCATION</string>
+    <string name="view_map">VIEW MAP</string>
+    <string name="mark_resolved">MARK AS RESOLVED</string>
+    <string name="warning_icon_desc">Animated warning icon</string>
+
+</resources>

@@ -1,0 +1,37 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+
+    <!-- Deep Blue Glow -->
+    <item android:duration="4000">
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#0D0B1A"
+                android:centerColor="#1B0044"
+                android:endColor="#000814"
+                android:angle="135" />
+        </shape>
+    </item>
+
+    <!-- Electric Violet -->
+    <item android:duration="4000">
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#0A002E"
+                android:centerColor="#3A0088"
+                android:endColor="#1A1F3B"
+                android:angle="135" />
+        </shape>
+    </item>
+
+    <!-- Magenta Glow -->
+    <item android:duration="4000">
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#10002B"
+                android:centerColor="#5E00FF"
+                android:endColor="#12002F"
+                android:angle="135" />
+        </shape>
+    </item>
+
+</animation-list>

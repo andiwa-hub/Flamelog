@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A0F1A"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:id="@+id/dashboardLayout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <!-- 🔥 App Title -->
+        <TextView
+            android:id="@+id/tvAppName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SafeFlame"
+            android:textColor="#00FFFF"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:layout_marginTop="40dp"
+            android:fontFamily="sans-serif-medium"
+            android:layout_gravity="center"
+            android:animation="@anim/blink" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dashboard"
+            android:textColor="#66CCFF"
+            android:textSize="18sp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- 🌡️ Temperature Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/card_bg"
+            android:padding="16dp"
+            android:layout_marginBottom="12dp">
+
+            <ImageView
+                android:src="@drawable/ic_fire"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginEnd="12dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Temperature"
+                    android:textColor="#00FFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Room"
+                    android:textColor="#66CCFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvTemperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="27°C"
+                android:textColor="#00FF00"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- 💨 Smoke Sensor Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/card_bg"
+            android:padding="16dp"
+            android:layout_marginBottom="12dp">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_smoke"
+                android:layout_marginEnd="12dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Smoke"
+                    android:textColor="#00FFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Density"
+                    android:textColor="#66CCFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvSmoke"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Normal"
+                android:textColor="#00FF00"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- 🔥 Flame Detector Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/card_bg"
+            android:padding="16dp"
+            android:layout_marginBottom="12dp">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_flame"
+                android:layout_marginEnd="12dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Flame"
+                    android:textColor="#00FFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="None Detected"
+                    android:textColor="#66CCFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvFlame"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Safe"
+                android:textColor="#00FF00"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- ⚠️ Alert Level Panel -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:weightSum="3"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <View
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:background="@drawable/red_circle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="High"
+                    android:textColor="#FF4D4D"
+                    android:textSize="14sp"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <View
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:background="@drawable/orange_circle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Medium"
+                    android:textColor="#FF884D"
+                    android:textSize="14sp"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <View
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:background="@drawable/green_circle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Low"
+                    android:textColor="#00FFCC"
+                    android:textSize="14sp"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 🧰 Quick Action Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp"
+            android:weightSum="3">
+
+            <Button
+                android:id="@+id/btnLogs"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Logs"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/button_bg"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/btnSettings"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Settings"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/button_bg"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/btnSensorHealth"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Sensors"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/button_bg" />
+        </LinearLayout>
+
+        <!-- 🚨 Emergency Button -->
+        <Button
+            android:id="@+id/btnEmergency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="EMERGENCY"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:padding="14dp"
+            android:textSize="18sp"
+            android:background="@drawable/button_bg"
+            android:animation="@anim/button_neon_pulse" />
+
+    </LinearLayout>
+</ScrollView>

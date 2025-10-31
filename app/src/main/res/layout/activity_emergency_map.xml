@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <!-- 🟦 Top Bar -->
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="#10141A"
+        android:padding="12dp"
+        android:elevation="6dp">
+
+        <!-- 🔙 Back Button -->
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_back"
+            android:contentDescription="Go back"
+            app:tint="#00FFFF" />
+
+        <!-- 🧭 Title -->
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="EMERGENCY ALERT"
+            android:textColor="#00FFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center" />
+
+        <!-- ⚙️ Settings Button -->
+        <ImageButton
+            android:id="@+id/btnSettings"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/settings"
+            android:contentDescription="Open settings"
+            app:tint="#00FFFF" />
+    </LinearLayout>
+
+    <!-- 🗺️ Google Map Fragment (modern, fixes Unknown Fragment error) -->
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/topBar" />
+
+    <!-- 🔥 Glowing Fire Pulse -->
+    <View
+        android:id="@+id/firePulse"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/red_glow_circle"
+        android:alpha="0.6" />
+
+    <!-- 🚨 Alert Message -->
+    <TextView
+        android:id="@+id/tvAlertMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🔥 FIRE DETECTED – HIGH LEVEL!"
+        android:textColor="#FF1744"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp" />
+
+    <!-- 🧯 Bottom Info Panel -->
+    <LinearLayout
+        android:id="@+id/bottomPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#11151C"
+        android:padding="20dp"
+        android:layout_alignParentBottom="true"
+        android:elevation="10dp">
+
+        <!-- Fire Location Label -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🔥 FIRE LOCATION"
+            android:textColor="#00FFFF"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <!-- Location Info -->
+        <TextView
+            android:id="@+id/tvLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Manila, Philippines"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp" />
+
+        <!-- Nearest Station Label -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🚒 NEAREST STATION"
+            android:textColor="#00FFFF"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <!-- Nearest Station Info -->
+        <TextView
+            android:id="@+id/tvNearestStation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2.8 km • Quezon City Fire Dept."
+            android:textColor="#FFFFFF"
+            android:textSize="17sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- 🚨 Action Buttons -->
+        <Button
+            android:id="@+id/btnCall911"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="CALL 911"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#FF1744"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnMarkResolved"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="MARK AS RESOLVED"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#FFD600"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnShareLocation"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="SHARE LOCATION"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#00FFFF" />
+    </LinearLayout>
+</RelativeLayout>
