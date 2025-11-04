@@ -8,6 +8,7 @@
         <item name="android:windowBackground">#0A0F1A</item>
     </style>
 
+<<<<<<< HEAD
     <style name="KeypadButton">
         <item name="android:layout_width">80dp</item>
         <item name="android:layout_height">80dp</item>
@@ -33,4 +34,6 @@
 
 
 
+=======
+>>>>>>> origin/main
 </resources>

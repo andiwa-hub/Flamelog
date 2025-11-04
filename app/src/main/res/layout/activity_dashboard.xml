@@ -30,7 +30,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Dashboard"
+<<<<<<< HEAD
             android:textColor="#FFFFFF"
+=======
+            android:textColor="#66CCFF"
+>>>>>>> origin/main
             android:textSize="18sp"
             android:layout_marginBottom="24dp" />
 
@@ -59,7 +63,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Temperature"
+<<<<<<< HEAD
                     android:textColor="#FFFFFF"
+=======
+                    android:textColor="#00FFFF"
+>>>>>>> origin/main
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -67,7 +75,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Room"
+<<<<<<< HEAD
                     android:textColor="#FFFFFF"
+=======
+                    android:textColor="#66CCFF"
+>>>>>>> origin/main
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -106,7 +118,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Smoke"
+<<<<<<< HEAD
                     android:textColor="#FFFFFF"
+=======
+                    android:textColor="#00FFFF"
+>>>>>>> origin/main
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -114,7 +130,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Density"
+<<<<<<< HEAD
                     android:textColor="#FFFFFF"
+=======
+                    android:textColor="#66CCFF"
+>>>>>>> origin/main
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -153,7 +173,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Flame"
+<<<<<<< HEAD
                     android:textColor="#FFFFFF"
+=======
+                    android:textColor="#00FFFF"
+>>>>>>> origin/main
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -161,7 +185,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="None Detected"
+<<<<<<< HEAD
                     android:textColor="#FFFFFF"
+=======
+                    android:textColor="#66CCFF"
+>>>>>>> origin/main
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -291,6 +319,7 @@
             android:id="@+id/btnEmergency"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:animation="@anim/button_neon_pulse"
             android:background="@drawable/button_bg"
             android:padding="14dp"
@@ -298,6 +327,15 @@
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="bold" />
+=======
+            android:text="EMERGENCY"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:padding="14dp"
+            android:textSize="18sp"
+            android:background="@drawable/button_bg"
+            android:animation="@anim/button_neon_pulse" />
+>>>>>>> origin/main
 
     </LinearLayout>
 </ScrollView>
