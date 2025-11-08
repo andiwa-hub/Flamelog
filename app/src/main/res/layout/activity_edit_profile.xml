@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="#0A1D3D"
     android:padding="20dp">
 
     <LinearLayout
@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Edit Profile"
-            android:textColor="#00FFFF"
+            android:textColor="#FFB300"
             android:textSize="28sp"
             android:textStyle="bold"
             android:layout_marginBottom="24dp"
@@ -35,10 +35,10 @@
             android:id="@+id/btnChangePic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="#FFB300"
             android:text="Change Picture"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="#00FFFF"
-            android:layout_marginBottom="24dp" />
+            android:textColor="#0A1D3D" />
 
         <!-- Full Name -->
         <EditText
@@ -50,7 +50,7 @@
             android:hint="Full Name"
             android:textColor="#FFFFFF"
             android:textColorHint="#808080"
-            android:backgroundTint="#00FFFF"
+            android:backgroundTint="#FFB300"
             android:layout_marginBottom="60dp" />
 
         <!-- Email -->
@@ -63,7 +63,7 @@
             android:hint="Email"
             android:textColor="#FFFFFF"
             android:textColorHint="#808080"
-            android:backgroundTint="#00FFFF"
+            android:backgroundTint="#FFB300"
             android:layout_marginBottom="60dp"
             android:inputType="textEmailAddress" />
 
@@ -76,7 +76,7 @@
             android:hint="Password"
             android:textColor="#FFFFFF"
             android:textColorHint="#808080"
-            android:backgroundTint="#00FFFF"
+            android:backgroundTint="#FFB300"
             android:layout_marginBottom="24dp"
             android:inputType="textPassword" />
 
@@ -86,11 +86,11 @@
             android:id="@+id/btnSaveProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#FFB300"
             android:text="Save Changes"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="#00FFFF"
-            android:textStyle="bold"
-            android:layout_marginBottom="16dp" />
+            android:textColor="#0A1D3D"
+            android:textStyle="bold" />
 
         <!-- Cancel Button -->
         <Button
@@ -98,8 +98,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cancel"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="#FF1744"
+            android:textColor="#FFF1D6"
+            android:backgroundTint="#A00000"
             android:textStyle="bold" />
 
     </LinearLayout>

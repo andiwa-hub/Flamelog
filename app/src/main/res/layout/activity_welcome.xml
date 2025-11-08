@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:background="#000000"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#0A1D3D"
+    android:gravity="center"
+    android:orientation="vertical"
     android:padding="24dp">
 
     <!-- Neon Fire Logo -->
@@ -13,50 +13,46 @@
         android:id="@+id/logoImage"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:src="@drawable/ic_fire"
-        android:contentDescription="App Logo"
-        app:tint="#00FFFF"
         android:layout_marginBottom="16dp"
-        android:alpha="0.9" />
+        android:alpha="0.9"
+        android:contentDescription="App Logo"
+        android:src="@drawable/ic_fire"
+        app:tint="#FFB300" />
 
     <!-- Welcome Title -->
     <TextView
         android:id="@+id/welcomeTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to SafeFlame!"
-        android:textColor="#00FFFF"
-        android:textSize="24sp"
-        android:textStyle="bold"
         android:layout_marginBottom="12dp"
-        android:shadowColor="#00FFFF"
+        android:shadowColor="#FFB600"
         android:shadowDx="0"
         android:shadowDy="0"
-        android:shadowRadius="8" />
+        android:shadowRadius="8"
+        android:text="Welcome to SafeFlame!"
+        android:textColor="#FFB300"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <!-- Subtitle -->
     <TextView
         android:id="@+id/subTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
         android:text="Smart Fire Detection &amp; Alert System"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:layout_marginBottom="40dp" />
+        android:textColor="#FF6B00"
+        android:textSize="16sp" />
 
     <!-- Get Started Button -->
     <Button
         android:id="@+id/btnGetStarted"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Get Started"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#FF1744"
-        android:textSize="18sp"
+        android:backgroundTint="#FFB300"
         android:padding="12dp"
-        android:shadowColor="#FF1744"
-        android:shadowDx="0"
-        android:shadowDy="0"
-        android:shadowRadius="12" />
+        android:text="Get Started"
+        android:textColor="#0A1D3D"
+        android:textSize="18sp" />
 
 </LinearLayout>

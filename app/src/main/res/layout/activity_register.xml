@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="#0A1D3D"
     android:padding="24dp">
 
     <LinearLayout
@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:text="Create Account"
             android:textSize="26sp"
-            android:textColor="#00FFFF"
+            android:textColor="#FFB300"
             android:layout_marginBottom="24dp"
             android:textStyle="bold"
             android:layout_gravity="center" />
@@ -29,7 +29,7 @@
             android:textColor="#FFFFFF"
             android:textColorHint="#777777"
             android:inputType="textPersonName"
-            android:backgroundTint="#00FFFF"
+            android:backgroundTint="#FFB300"
             android:layout_marginBottom="12dp"
             android:padding="12dp" />
 
@@ -41,7 +41,7 @@
             android:textColor="#FFFFFF"
             android:textColorHint="#777777"
             android:inputType="textEmailAddress"
-            android:backgroundTint="#00FFFF"
+            android:backgroundTint="#FFB300"
             android:layout_marginBottom="12dp"
             android:padding="12dp" />
 
@@ -53,7 +53,7 @@
             android:textColor="#FFFFFF"
             android:textColorHint="#777777"
             android:inputType="textPassword"
-            android:backgroundTint="#00FFFF"
+            android:backgroundTint="#FFB300"
             android:layout_marginBottom="12dp"
             android:padding="12dp" />
 
@@ -65,7 +65,7 @@
             android:textColor="#FFFFFF"
             android:textColorHint="#777777"
             android:inputType="textPassword"
-            android:backgroundTint="#00FFFF"
+            android:backgroundTint="#FFB300"
             android:layout_marginBottom="20dp"
             android:padding="12dp" />
 
@@ -73,18 +73,18 @@
             android:id="@+id/btnRegister"
             android:layout_width="match_parent"
             android:layout_height="55dp"
+            android:backgroundTint="#FFB300"
+            android:elevation="6dp"
             android:text="Register"
-            android:textColor="#000000"
-            android:backgroundTint="#00FFFF"
-            android:textStyle="bold"
-            android:elevation="6dp" />
+            android:textColor="#0A1D3D"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtLoginLink"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Already have an account? Login"
-            android:textColor="#FF1744"
+            android:textColor="#A00000"
             android:layout_marginTop="20dp"
             android:layout_gravity="center" />
     </LinearLayout>

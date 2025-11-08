@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0B0C10"
+    android:background="#0A1D3D"
     android:padding="16dp">
 
     <!-- Title -->
@@ -11,12 +11,12 @@
         android:id="@+id/tvIncidentLogTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Incident Log"
-        android:textColor="#00E5FF"
-        android:textSize="26sp"
-        android:textStyle="bold"
+        android:layout_marginBottom="16dp"
         android:gravity="center"
-        android:layout_marginBottom="16dp" />
+        android:text="Incident Log"
+        android:textColor="#FFB300"
+        android:textSize="26sp"
+        android:textStyle="bold" />
 
     <!-- Filter Dropdown -->
 
@@ -24,14 +24,14 @@
         android:id="@+id/spinnerFilter"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
         android:layout_below="@id/tvIncidentLogTitle"
         android:layout_alignParentEnd="true"
-        android:spinnerMode="dropdown"
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="#FF6B00"
         android:entries="@array/alert_levels"
-        android:backgroundTint="#00E5FF"
-        android:layout_marginBottom="12dp" />
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:spinnerMode="dropdown" />
 
 
     <!-- RecyclerView -->
@@ -48,13 +48,13 @@
         android:id="@+id/fabExportLogs"
         android:layout_width="56dp"
         android:layout_height="56dp"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
+        android:contentDescription="Export Logs"
+        app:backgroundTint="#E6B800"
         app:srcCompat="@android:drawable/ic_menu_save"
-        app:backgroundTint="#FFD600"
-        app:tint="#000000"
-        android:contentDescription="Export Logs" />
+        app:tint="#000000" />
 
 
 </RelativeLayout>

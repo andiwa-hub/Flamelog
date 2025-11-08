@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000">
+    android:background="#0A1D3D">
 
     <!-- 🟦 Top Bar -->
     <LinearLayout
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:background="#10141A"
+        android:background="#11284C"
         android:padding="12dp"
         android:elevation="6dp">
 
@@ -24,7 +24,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_back"
             android:contentDescription="Go back"
-            app:tint="#00FFFF" />
+            app:tint="#FFB300" />
 
         <!-- 🧭 Title -->
         <TextView
@@ -33,8 +33,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="EMERGENCY ALERT"
-            android:textColor="#00FFFF"
-            android:textSize="20sp"
+            android:textColor="#FFB300"
+            android:textSize="22sp"
             android:textStyle="bold"
             android:gravity="center" />
 
@@ -46,7 +46,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/settings"
             android:contentDescription="Open settings"
-            app:tint="#00FFFF" />
+            app:tint="#FFB300" />
     </LinearLayout>
 
     <!-- 🗺️ Google Map Fragment (modern, fixes Unknown Fragment error) -->
@@ -64,7 +64,7 @@
         android:layout_height="130dp"
         android:layout_centerInParent="true"
         android:background="@drawable/red_glow_circle"
-        android:alpha="0.6" />
+        android:alpha="0.4" />
 
     <!-- 🚨 Alert Message -->
     <TextView
@@ -72,7 +72,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="🔥 FIRE DETECTED – HIGH LEVEL!"
-        android:textColor="#FF1744"
+        android:textColor="#FF6B00"
         android:textSize="24sp"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
@@ -84,7 +84,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="#11151C"
+        android:background="#11284C"
         android:padding="20dp"
         android:layout_alignParentBottom="true"
         android:elevation="10dp">
@@ -94,7 +94,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="🔥 FIRE LOCATION"
-            android:textColor="#00FFFF"
+            android:textColor="#FFB300"
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -106,7 +106,6 @@
             android:text="Manila, Philippines"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            android:textStyle="bold"
             android:layout_marginBottom="10dp" />
 
         <!-- Nearest Station Label -->
@@ -114,7 +113,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="🚒 NEAREST STATION"
-            android:textColor="#00FFFF"
+            android:textColor="#FFB300"
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -136,8 +135,8 @@
             android:text="CALL 911"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="#FF1744"
+            android:textColor="#FFF1D6"
+            android:backgroundTint="#A00000"
             android:layout_marginBottom="10dp" />
 
         <Button
@@ -147,8 +146,8 @@
             android:text="MARK AS RESOLVED"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="#FFD600"
+            android:textColor="#0A1D3D"
+            android:backgroundTint="#FFD67C"
             android:layout_marginBottom="10dp" />
 
         <Button
@@ -158,7 +157,7 @@
             android:text="SHARE LOCATION"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="#00FFFF" />
+            android:textColor="#FFF1D6"
+            android:backgroundTint="#FF6B00" />
     </LinearLayout>
 </RelativeLayout>

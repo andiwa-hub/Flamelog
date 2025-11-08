@@ -6,7 +6,7 @@
     android:id="@+id/auth_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0A0F1F"
+    android:background="#0A1D3D"
     tools:context=".PhoneAuthActivity">
 
     <!-- 🔥 App Icon -->
@@ -15,11 +15,11 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:src="@drawable/ic_fire"
-        app:tint="#00E5FF"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_margin="80dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_margin="80dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="#FFB300" />
 
     <!-- 📱 Title -->
     <TextView
@@ -27,13 +27,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Phone Authentication"
-        android:textColor="#00E5FF"
+        android:textColor="#FFB300"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/app_icon"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_margin="24dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_margin="24dp"
+        app:layout_constraintTop_toBottomOf="@id/app_icon" />
 
     <!-- 📝 Subtitle -->
     <TextView
@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enter your phone number"
-        android:textColor="#AAB3C0"
+        android:textColor="#B0BEC5"
         android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@id/title"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,16 +53,17 @@
         android:id="@+id/phone_number"
         android:layout_width="260dp"
         android:layout_height="50dp"
-        android:hint="+63 912 345 6789"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="#1B3A67"
         android:gravity="center"
+        android:hint="+63 912 345 6789"
+        android:inputType="phone"
         android:textColor="#FFFFFF"
         android:textColorHint="#808080"
-        android:inputType="phone"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintTop_toBottomOf="@id/subtitle"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_margin="24dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_margin="24dp"
+        app:layout_constraintTop_toBottomOf="@id/subtitle" />
 
     <!-- 🔢 Number Pad Layout -->
     <GridLayout
@@ -79,17 +80,17 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <!-- Buttons 1–9 -->
-        <Button android:text="1" style="@style/KeypadButton" />
-        <Button android:text="2" style="@style/KeypadButton" />
-        <Button android:text="3" style="@style/KeypadButton" />
-        <Button android:text="4" style="@style/KeypadButton" />
-        <Button android:text="5" style="@style/KeypadButton" />
-        <Button android:text="6" style="@style/KeypadButton" />
-        <Button android:text="7" style="@style/KeypadButton" />
-        <Button android:text="8" style="@style/KeypadButton" />
-        <Button android:text="9" style="@style/KeypadButton" />
+        <Button android:text="1" style="@style/KeypadButton" android:backgroundTint="#132C4C" android:textColor="#FFFFFF" />
+        <Button android:text="2" style="@style/KeypadButton" android:backgroundTint="#132C4C" android:textColor="#FFFFFF" />
+        <Button android:text="3" style="@style/KeypadButton" android:backgroundTint="#132C4C" android:textColor="#FFFFFF" />
+        <Button android:text="4" style="@style/KeypadButton" android:backgroundTint="#132C4C" android:textColor="#FFFFFF" />
+        <Button android:text="5" style="@style/KeypadButton" android:backgroundTint="#132C4C" android:textColor="#FFFFFF" />
+        <Button android:text="6" style="@style/KeypadButton" android:backgroundTint="#132C4C" android:textColor="#FFFFFF" />
+        <Button android:text="7" style="@style/KeypadButton" android:backgroundTint="#132C4C" android:textColor="#FFFFFF" />
+        <Button android:text="8" style="@style/KeypadButton" android:backgroundTint="#132C4C" android:textColor="#FFFFFF" />
+        <Button android:text="9" style="@style/KeypadButton" android:backgroundTint="#132C4C" android:textColor="#FFFFFF" />
         <View android:layout_width="80dp" android:layout_height="80dp" />
-        <Button android:text="0" style="@style/KeypadButton" />
+        <Button android:text="0" style="@style/KeypadButton" android:backgroundTint="#132C4C" android:textColor="#FFFFFF" />
         <View android:layout_width="80dp" android:layout_height="80dp" />
     </GridLayout>
 
@@ -100,8 +101,8 @@
         android:layout_height="55dp"
         android:text="SEND VERIFICATION CODE"
         android:textStyle="bold"
-        android:textColor="#000000"
-        android:backgroundTint="#00E5FF"
+        android:textColor="#0A1D3D"
+        android:backgroundTint="#FFB300"
         app:layout_constraintTop_toBottomOf="@id/number_pad"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
