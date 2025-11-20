@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="#0A1D3D"
     android:padding="20dp">
 
     <LinearLayout
@@ -10,93 +9,21 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Title -->
         <TextView
             android:id="@+id/settingsTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Settings"
-            android:textColor="#00FFFF"
+            android:textColor="#FFB300"
             android:textSize="26sp"
             android:textStyle="bold"
             android:gravity="center"
             android:layout_marginBottom="24dp" />
 
-<<<<<<< HEAD
-        <!-- 🔷 Bluetooth Settings -->
-        <LinearLayout
-            android:id="@+id/bluetoothCard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="12dp"
-            android:background="@drawable/card_bg"
-            android:layout_marginBottom="16dp">
+        <!-- Bluetooth Card -->
 
-            <TextView
-                android:id="@+id/bluetoothTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Bluetooth Connection"
-                android:textColor="#00FFFF"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="10dp" />
 
-            <!-- Bluetooth Toggle -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Enable Bluetooth"
-                    android:textColor="#FFFFFF"
-                    android:textSize="16sp" />
-
-                <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/switchBluetooth"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:minHeight="48dp"
-                    android:minWidth="48dp"
-                    android:padding="8dp"
-                    android:thumbTint="#00FFFF"
-                    android:trackTint="#00FFFF"
-                    android:layout_marginEnd="4dp" />
-            </LinearLayout>
-
-            <!-- Connect Button -->
-            <Button
-                android:id="@+id/btnConnectArduino"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="Connect to Arduino"
-                android:textColor="#000000"
-                android:backgroundTint="#00FFFF"
-                android:textStyle="bold"
-                android:layout_marginTop="12dp"
-                android:elevation="6dp" />
-
-            <!-- Connection Status -->
-            <TextView
-                android:id="@+id/bluetoothStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Status: Disconnected"
-                android:textColor="#AAB3C0"
-                android:textSize="14sp"
-                android:layout_marginTop="8dp"
-                android:layout_gravity="center_horizontal" />
-        </LinearLayout>
-
-=======
->>>>>>> origin/main
-        <!-- Enable Notifications -->
+        <!-- Notifications -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -111,26 +38,22 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Enable Notifications"
-                android:textColor="#FFFFFF"
+                android:textColor="#FFF1D6"
                 android:textSize="16sp" />
 
-<<<<<<< HEAD
             <androidx.appcompat.widget.SwitchCompat
-=======
-            <Switch
->>>>>>> origin/main
                 android:id="@+id/switchNotifications"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:minHeight="48dp"
                 android:minWidth="48dp"
                 android:padding="8dp"
-                android:thumbTint="#00FFFF"
-                android:trackTint="#00FFFF"
+                android:thumbTint="#FFB300"
+                android:trackTint="#FFB300"
                 android:layout_marginEnd="4dp" />
         </LinearLayout>
 
-        <!-- Enable Vibration/Sound -->
+        <!-- Vibration/Sound -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -145,26 +68,22 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Enable Vibration/Sound"
-                android:textColor="#FFFFFF"
+                android:textColor="#FFF1D6"
                 android:textSize="16sp" />
 
-<<<<<<< HEAD
             <androidx.appcompat.widget.SwitchCompat
-=======
-            <Switch
->>>>>>> origin/main
                 android:id="@+id/switchVibration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:minHeight="48dp"
                 android:minWidth="48dp"
                 android:padding="8dp"
-                android:thumbTint="#00FFFF"
-                android:trackTint="#00FFFF"
+                android:thumbTint="#FFB300"
+                android:trackTint="#FFB300"
                 android:layout_marginEnd="4dp" />
         </LinearLayout>
 
-        <!-- Alert Sensitivity -->
+        <!-- Sensitivity -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -177,7 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Alert Sensitivity"
-                android:textColor="#FFFFFF"
+                android:textColor="#FFF1D6"
                 android:textSize="16sp"
                 android:layout_marginBottom="8dp" />
 
@@ -185,32 +104,41 @@
                 android:id="@+id/seekBarSensitivity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:progressTint="#00FFFF"
-                android:thumbTint="#00FFFF"
+                android:progressTint="#FFB300"
+                android:thumbTint="#FFB300"
                 android:max="100"
                 android:progress="50" />
         </LinearLayout>
 
-        <!-- Edit Profile Button -->
+        <!-- Profile & Logout -->
         <Button
             android:id="@+id/btnEditProfile"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:text="Edit Profile"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="#00FFFF"
+            android:textColor="#11284C"
+            android:backgroundTint="#FFD67C"
             android:textStyle="bold"
             android:layout_marginBottom="16dp"
             android:elevation="6dp" />
 
-        <!-- Log Out Button -->
+        <Button
+            android:id="@+id/btnSetHomeLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Set Home Location"
+            android:backgroundTint="#FF6B00"
+            android:textColor="#FFF1D6"
+            android:textStyle="bold"/>
+
+
         <Button
             android:id="@+id/btnLogOut"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:text="Log Out"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="#FF1744"
+            android:textColor="#FFF1D6"
+            android:backgroundTint="#A00000"
             android:textStyle="bold"
             android:layout_marginBottom="16dp"
             android:elevation="6dp" />

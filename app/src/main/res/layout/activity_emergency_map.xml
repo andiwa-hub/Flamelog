@@ -17,14 +17,6 @@
         android:elevation="6dp">
 
         <!-- 🔙 Back Button -->
-        <ImageButton
-            android:id="@+id/btnBack"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_back"
-            android:contentDescription="Go back"
-            app:tint="#FFB300" />
 
         <!-- 🧭 Title -->
         <TextView
@@ -38,21 +30,11 @@
             android:textStyle="bold"
             android:gravity="center" />
 
-        <!-- ⚙️ Settings Button -->
-        <ImageButton
-            android:id="@+id/btnSettings"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/settings"
-            android:contentDescription="Open settings"
-            app:tint="#FFB300" />
     </LinearLayout>
 
-    <!-- 🗺️ Google Map Fragment (modern, fixes Unknown Fragment error) -->
-    <androidx.fragment.app.FragmentContainerView
+    <!-- 🗺️ OsmDroid MapView -->
+    <org.osmdroid.views.MapView
         android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/topBar" />
@@ -108,37 +90,6 @@
             android:textSize="18sp"
             android:layout_marginBottom="10dp" />
 
-        <!-- Nearest Station Label -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="🚒 NEAREST STATION"
-            android:textColor="#FFB300"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <!-- Nearest Station Info -->
-        <TextView
-            android:id="@+id/tvNearestStation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2.8 km • Quezon City Fire Dept."
-            android:textColor="#FFFFFF"
-            android:textSize="17sp"
-            android:layout_marginBottom="16dp" />
-
-        <!-- 🚨 Action Buttons -->
-        <Button
-            android:id="@+id/btnCall911"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:text="CALL 911"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="#FFF1D6"
-            android:backgroundTint="#A00000"
-            android:layout_marginBottom="10dp" />
-
         <Button
             android:id="@+id/btnMarkResolved"
             android:layout_width="match_parent"
@@ -150,14 +101,6 @@
             android:backgroundTint="#FFD67C"
             android:layout_marginBottom="10dp" />
 
-        <Button
-            android:id="@+id/btnShareLocation"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:text="SHARE LOCATION"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="#FFF1D6"
-            android:backgroundTint="#FF6B00" />
     </LinearLayout>
 </RelativeLayout>
+

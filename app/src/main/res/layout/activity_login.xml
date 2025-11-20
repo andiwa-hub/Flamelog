@@ -42,14 +42,14 @@
         android:textSize="14sp" />
 
     <EditText
-        android:id="@+id/usernameInput"
+        android:id="@+id/emailInput"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/btn_emergency"
         android:backgroundTint="#FFB300"
-        android:hint="Username"
-        android:inputType="text"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
         android:padding="12dp"
         android:textColor="#FFFFFF"
         android:textColorHint="#808080" />
@@ -78,6 +78,17 @@
         android:elevation="8dp"
         android:background="@drawable/card_bg"
         android:backgroundTint="#00B8D4" />
+
+    <!-- 🔧 New Forgot Password link -->
+    <TextView
+        android:id="@+id/forgotPasswordLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forgot Password?"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/registerLink"

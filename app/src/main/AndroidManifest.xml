@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.flamelog">
 
-<<<<<<< HEAD
-    <!-- 🌐 Network & Location Permissions -->
-=======
-    <!-- 🌐 Network & Maps Permissions -->
->>>>>>> origin/main
+    <!-- ✅ Network / location -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-<<<<<<< HEAD
 
-    <!-- 📞 Optional: Calling Feature -->
+    <!-- ✅ Storage (legacy). Consider migrating off these; keep for OsmDroid if needed -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- ✅ Notifications (Android 13+) -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- ✅ Boot receiver to restart monitoring after reboot -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+    <!-- ✅ Telephony and Bluetooth (as you had) -->
     <uses-permission android:name="android.permission.CALL_PHONE" />
-
-    <!-- 🔷 Bluetooth Permissions (for Android 12+) -->
     <uses-permission android:name="android.permission.BLUETOOTH" android:maxSdkVersion="30" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" android:maxSdkVersion="30" />
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
 
-=======
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-
->>>>>>> origin/main
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="SAFEFLAME"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
+        android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
+        android:requestLegacyExternalStorage="true">
 
-<<<<<<< HEAD
-        <!-- 🗺Google Maps API Key -->
-=======
-        <!-- 🔑 Google Maps API Key -->
->>>>>>> origin/main
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+        <service
+            android:name=".PushNotifFireAlertMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
-<<<<<<< HEAD
-        <!-- 📁 File Provider -->
-=======
-        <!-- 📁 File Provider (for sharing or exporting files) -->
->>>>>>> origin/main
+
+        <!-- ✅ OsmDroid cache configuration -->
+        <meta-data android:name="osmdroid.basePath" android:value="osmdroid" />
+        <meta-data android:name="osmdroid.cachePath" android:value="osmdroid/cache" />
+
+        <!-- ✅ FileProvider for safe file sharing -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
@@ -57,31 +57,27 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-<<<<<<< HEAD
-        <!-- 🧭 App Activities -->
+        <!-- ✅ Activities -->
         <activity android:name=".Incident" android:exported="false" />
         <activity android:name=".EmergencyMapActivity" android:exported="false" />
-        <activity android:name=".DashboardActivity" android:exported="false" />
-        <activity android:name=".SettingsActivity" android:exported="false" />
-        <activity android:name=".EditProfileActivity" android:exported="false" />
-        <activity android:name=".LoginActivity" android:exported="false" />
-        <activity android:name=".RegisterActivity" android:exported="false" />
-
-        <!-- 🚀 Launcher Activity -->
-=======
-        <!-- 🧭 Activities -->
-        <activity android:name=".Incident" android:exported="false" />
-        <activity android:name=".EmergencyMapActivity" android:exported="false" />
-        <activity android:name=".DashboardActivity" android:exported="false" />
-
-        <!-- 🚀 Main Launcher -->
->>>>>>> origin/main
-        <activity android:name=".MainActivity" android:exported="true">
+        <activity android:name=".AlertDialogActivity" android:exported="false" />
+        <activity android:name=".LoginActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LogActivity" android:exported="false" />
+        <activity android:name=".SettingsActivity" android:exported="false" />
+        <activity android:name=".MapPickerActivity" android:exported="false" />
+        <activity android:name=".ContactsActivity" android:exported="false" />
+        <activity android:name=".EditProfileActivity" android:exported="false" />
+        <activity android:name=".DashboardActivity" android:exported="false" />
+        <activity android:name=".UserDashboardActivity" android:exported="false" />
+        <activity android:name=".RegisteredUsersActivity" android:exported="false" />
+        <activity android:name=".PushNotifFireAlertMessagingService" android:exported="false" />
+        <activity android:name=".RegisterActivity" android:exported="false" />
+        <activity android:name=".MainActivity" android:exported="false" />
 
     </application>
 

@@ -9,18 +9,26 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class RegisterActivity extends AppCompatActivity {
 
     EditText inputName, inputEmail, inputPassword, inputConfirmPassword;
     Button btnRegister;
     TextView txtLoginLink;
+    FirebaseAuth mAuth;
+    DatabaseReference userProfileRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        // Initialize UI components
         inputName = findViewById(R.id.inputName);
         inputEmail = findViewById(R.id.inputEmail);
         inputPassword = findViewById(R.id.inputPassword);
@@ -28,7 +36,9 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister = findViewById(R.id.btnRegister);
         txtLoginLink = findViewById(R.id.txtLoginLink);
 
-        // Handle Register button click
+        mAuth = FirebaseAuth.getInstance();
+        userProfileRef = FirebaseDatabase.getInstance().getReference("UserProfile");
+
         btnRegister.setOnClickListener(v -> {
             String name = inputName.getText().toString().trim();
             String email = inputEmail.getText().toString().trim();
@@ -45,20 +55,41 @@ public class RegisterActivity extends AppCompatActivity {
                 return;
             }
 
-            // Simulate registration success
-            Toast.makeText(this, "Registration successful! Please log in.", Toast.LENGTH_SHORT).show();
+            mAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            String uid = mAuth.getCurrentUser().getUid();
 
-            // Redirect to Login screen
-            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-            startActivity(intent);
-            finish();
+                            Map<String, Object> profile = new HashMap<>();
+                            profile.put("name", name);
+                            profile.put("email", email);
+                            profile.put("role", "user");     // default role
+                            profile.put("approved", false);  // pending until admin approves
+
+                            userProfileRef.child(uid).setValue(profile);
+
+                            Toast.makeText(this,
+                                    "Registration successful! Pending admin approval.",
+                                    Toast.LENGTH_LONG).show();
+
+                            mAuth.signOut();
+                            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                            finish();
+                        } else {
+                            Toast.makeText(this,
+                                    "Registration failed: " + task.getException().getMessage(),
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    });
         });
 
-        // Handle "Already have an account?" link
         txtLoginLink.setOnClickListener(v -> {
-            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
             finish();
         });
     }
 }
+
+
+
+

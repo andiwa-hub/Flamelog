@@ -19,7 +19,6 @@
         android:textStyle="bold" />
 
     <!-- Filter Dropdown -->
-
     <Spinner
         android:id="@+id/spinnerFilter"
         android:layout_width="wrap_content"
@@ -28,22 +27,22 @@
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="12dp"
         android:backgroundTint="#FF6B00"
-        android:entries="@array/alert_levels"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:spinnerMode="dropdown" />
-
 
     <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvIncidentLogs"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_below="@id/spinnerFilter"
+        android:layout_above="@id/fabExportLogs"
         android:clipToPadding="false"
-        android:paddingBottom="80dp" />
+        android:paddingBottom="80dp"
+        android:scrollbars="vertical" />
 
-    <!-- Floating Action Button -->
+    <!-- Floating Action Button: Export Logs -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabExportLogs"
         android:layout_width="56dp"
@@ -56,5 +55,72 @@
         app:srcCompat="@android:drawable/ic_menu_save"
         app:tint="#000000" />
 
+    <!-- Clear Logs Button (Admin only) -->
+    <Button
+        android:id="@+id/btnClearLogs"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:text="Clear Logs"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#D32F2F"
+        android:drawableLeft="@android:drawable/ic_menu_delete"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp" />
+
+    <!-- ✅ Row Template for RecyclerView -->
+    <LinearLayout
+        android:id="@+id/item_log_template"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:background="#1A2B4C"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone"> <!-- hidden, used only as template -->
+
+        <!-- Alert Level -->
+        <TextView
+            android:id="@+id/tvLevel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Level: HIGH"
+            android:textColor="#FF6B00"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- Address -->
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Address: Lab 1, Los Baños"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:layout_marginTop="2dp" />
+
+        <!-- Status -->
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Status: Resolved"
+            android:textColor="#FFB300"
+            android:textSize="16sp"
+            android:layout_marginTop="4dp" />
+
+        <!-- Timestamp -->
+        <TextView
+            android:id="@+id/tvTimestamp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Time: Nov 19, 2025, 5:24 PM"
+            android:textColor="#AAAAAA"
+            android:textSize="14sp"
+            android:layout_marginTop="2dp" />
+    </LinearLayout>
 
 </RelativeLayout>
+

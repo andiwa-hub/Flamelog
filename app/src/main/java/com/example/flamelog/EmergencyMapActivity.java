@@ -1,125 +1,225 @@
 package com.example.flamelog;
 
-import androidx.fragment.app.FragmentActivity;
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.core.app.ActivityCompat;
+import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MapStyleOptions;
-import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-public class EmergencyMapActivity extends FragmentActivity implements OnMapReadyCallback {
+import org.osmdroid.config.Configuration;
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
+import org.osmdroid.util.GeoPoint;
+import org.osmdroid.views.MapController;
+import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.Marker;
+import org.osmdroid.views.overlay.ScaleBarOverlay;
 
-    private GoogleMap mMap;
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+public class EmergencyMapActivity extends AppCompatActivity {
+
+    private MapView map;
+    private MapController mapController;
     private View firePulse;
-    private TextView tvLocation, tvNearestStation;
-    private Button btnCall911, btnMarkResolved, btnShareLocation;
-    private ImageButton btnBack, btnSettings;
+    private TextView tvLocation, tvAlertMessage;
+    private Button btnMarkResolved;
+    private LinearLayout bottomPanel;
+
+    private boolean incidentLogged = false;
+    private boolean incidentActive = false;
+    private boolean locationReady = false;
+
+    private GeoPoint homePoint = null;
+    private Marker homeMarker = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Configuration.getInstance().setOsmdroidBasePath(getCacheDir());
+        Configuration.getInstance().setOsmdroidTileCache(getCacheDir());
+        Configuration.getInstance().setUserAgentValue(getPackageName());
+        Configuration.getInstance().load(getApplicationContext(),
+                PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
+
         setContentView(R.layout.activity_emergency_map);
 
-        // Initialize UI components
         firePulse = findViewById(R.id.firePulse);
         tvLocation = findViewById(R.id.tvLocation);
-        tvNearestStation = findViewById(R.id.tvNearestStation);
-        btnCall911 = findViewById(R.id.btnCall911);
+        tvAlertMessage = findViewById(R.id.tvAlertMessage);
+        bottomPanel = findViewById(R.id.bottomPanel);
         btnMarkResolved = findViewById(R.id.btnMarkResolved);
-        btnShareLocation = findViewById(R.id.btnShareLocation);
-        btnBack = findViewById(R.id.btnBack);
-        btnSettings = findViewById(R.id.btnSettings);
 
-        // Fire pulse glow animation
         Animation pulseAnim = AnimationUtils.loadAnimation(this, R.anim.fire_pulse);
         firePulse.startAnimation(pulseAnim);
 
-        // Initialize map fragment
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        if (mapFragment != null) {
-            mapFragment.getMapAsync(this);
-        } else {
-            Toast.makeText(this, "Map fragment not found!", Toast.LENGTH_SHORT).show();
-        }
+        map = findViewById(R.id.map);
+        map.setTileSource(TileSourceFactory.MAPNIK);
+        map.setBuiltInZoomControls(true);
+        map.setMultiTouchControls(true);
+        map.setUseDataConnection(true);
+        mapController = (MapController) map.getController();
 
-        // Button actions
-        btnBack.setOnClickListener(v -> finish()); // Go back
-        btnSettings.setOnClickListener(v -> Toast.makeText(this, "Settings clicked", Toast.LENGTH_SHORT).show());
+        ScaleBarOverlay scaleBar = new ScaleBarOverlay(map);
+        scaleBar.setAlignBottom(true);
+        map.getOverlays().add(scaleBar);
 
-        btnCall911.setOnClickListener(v -> callEmergency());
-        btnMarkResolved.setOnClickListener(v -> markResolved());
-        btnShareLocation.setOnClickListener(v -> shareLocation());
-    }
+        //  fetch location
+        DatabaseReference homeRef = FirebaseDatabase.getInstance().getReference("Location");
+        homeRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                Double homeLat = snapshot.child("homeLat").getValue(Double.class);
+                Double homeLng = snapshot.child("homeLng").getValue(Double.class);
+                String homeAddress = snapshot.child("homeAddress").getValue(String.class);
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
+                if (homeLat != null && homeLng != null) {
+                    homePoint = new GeoPoint(homeLat, homeLng);
+                    locationReady = true;
 
-        // Apply dark custom map style
-        try {
-            boolean success = mMap.setMapStyle(
-                    MapStyleOptions.loadRawResourceStyle(this, R.raw.dark_map_style));
-            if (!success) {
-                Toast.makeText(this, "⚠️ Map style failed to load.", Toast.LENGTH_SHORT).show();
+                    if (homeMarker != null) map.getOverlays().remove(homeMarker);
+                    homeMarker = new Marker(map);
+                    homeMarker.setPosition(homePoint);
+                    homeMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+                    homeMarker.setTitle("🏠 Home");
+                    map.getOverlays().add(homeMarker);
+
+                    tvLocation.setText(homeAddress != null ? homeAddress : "Home location set");
+
+                    map.post(() -> {
+                        float zoomLevel = getDynamicZoomLevel();
+                        mapController.setZoom(zoomLevel);
+                        mapController.setCenter(homePoint);
+                        map.invalidate();
+                    });
+                } else {
+                    locationReady = false;
+                    tvLocation.setText("Home location not set");
+                }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(this, "Error applying map style.", Toast.LENGTH_SHORT).show();
-        }
 
-        // Example hazard marker (replace with Firebase coordinates)
-        LatLng hazardLocation = new LatLng(14.5995, 120.9842);
-        mMap.addMarker(new MarkerOptions().position(hazardLocation).title("🔥 Fire Incident"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(hazardLocation, 14f));
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Toast.makeText(EmergencyMapActivity.this, "Failed to load home location", Toast.LENGTH_SHORT).show();
+            }
+        });
 
-        // Fire pulse visible
-        firePulse.setVisibility(View.VISIBLE);
+        // sensor listener
+        DatabaseReference sensorRef = FirebaseDatabase.getInstance().getReference("SensorData");
+        sensorRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                Long smokeDigital = snapshot.child("SmokeDigital").getValue(Long.class);
+                Long flameDigital = snapshot.child("FlameDigital").getValue(Long.class);
+                String alertLevel = snapshot.child("AlertLevel").getValue(String.class);
 
-        // Update location info
-        tvLocation.setText("Manila, Philippines");
-        tvNearestStation.setText("2.8 km • Quezon City Fire Dept.");
+                boolean fireDetected = (smokeDigital != null && smokeDigital == 0)
+                        || (flameDigital != null && flameDigital == 0);
+
+                if (fireDetected && locationReady) {
+                    tvAlertMessage.setVisibility(View.VISIBLE);
+                    firePulse.setVisibility(View.VISIBLE);
+                    bottomPanel.setVisibility(View.VISIBLE);
+
+                    incidentActive = true;
+
+                    if (!incidentLogged) {
+                        logIncident(tvLocation.getText().toString(), "active", alertLevel != null ? alertLevel : "Unknown");
+                        incidentLogged = true;
+                    }
+                } else {
+                    if (!incidentActive) {
+                        tvAlertMessage.setVisibility(View.GONE);
+                        firePulse.setVisibility(View.GONE);
+                        bottomPanel.setVisibility(View.GONE);
+                        incidentLogged = false;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Toast.makeText(EmergencyMapActivity.this, "Sensor data error", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnMarkResolved.setOnClickListener(v -> markResolved());
+
+        tvAlertMessage.setVisibility(View.GONE);
+        firePulse.setVisibility(View.GONE);
+        bottomPanel.setVisibility(View.GONE);
     }
 
-    private void callEmergency() {
-        Intent callIntent = new Intent(Intent.ACTION_CALL);
-        callIntent.setData(Uri.parse("tel:911")); // Replace with actual emergency number
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 1);
-            return;
-        }
-        startActivity(callIntent);
+    private float getDynamicZoomLevel() {
+        float density = getResources().getDisplayMetrics().density;
+        if (density >= 3.0) return 19.0f;
+        if (density >= 2.0) return 18.5f;
+        return 18.0f;
+    }
+
+    private void logIncident(String location, String status, String alertLevel) {
+        DatabaseReference logsRef = FirebaseDatabase.getInstance().getReference("incidents/logs");
+        String timestamp = DateFormat.getDateTimeInstance().format(new Date());
+
+        Map<String, Object> log = new HashMap<>();
+        log.put("location", location);
+        log.put("status", status);
+        log.put("alertLevel", alertLevel);
+        log.put("timestamp", timestamp);
+
+        logsRef.push().setValue(log);
     }
 
     private void markResolved() {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("incidents/current/status");
+        ref.setValue("resolved");
         Toast.makeText(this, "Incident marked as resolved", Toast.LENGTH_SHORT).show();
-        finish(); // Close activity
+
+        logIncident(tvLocation.getText().toString(), "resolved", "None");
+
+        incidentLogged = false;
+        incidentActive = false;
+
+        // Redirect to Dashboard
+        Intent intent = new Intent(EmergencyMapActivity.this, DashboardActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
     }
 
-    private void shareLocation() {
-        LatLng hazardLocation = new LatLng(14.5995, 120.9842); // Replace with real-time GPS
-        String locationLink = "https://maps.google.com/?q=" + hazardLocation.latitude + "," + hazardLocation.longitude;
+    @Override
+    public void onResume() {
+        super.onResume();
+        map.onResume();
+    }
 
-        Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        shareIntent.setType("text/plain");
-        shareIntent.putExtra(Intent.EXTRA_TEXT, "Fire Incident Location: " + locationLink);
-        startActivity(Intent.createChooser(shareIntent, "Share Location via"));
+    @Override
+    public void onPause() {
+        super.onPause();
+        map.onPause();
     }
 }
+
+
+
+
+
+
+
+

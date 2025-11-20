@@ -23,22 +23,6 @@
             android:gravity="center" />
 
         <!-- Profile Picture -->
-        <ImageView
-            android:id="@+id/profilePic"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@drawable/ic_user"
-            android:layout_marginBottom="24dp"
-            android:contentDescription="@string/profile_picture" />
-
-        <Button
-            android:id="@+id/btnChangePic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:backgroundTint="#FFB300"
-            android:text="Change Picture"
-            android:textColor="#0A1D3D" />
 
         <!-- Full Name -->
         <EditText
