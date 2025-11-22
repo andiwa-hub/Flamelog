@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mediumAlertPanel"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#FFFFFF"
+    android:padding="24dp"
+    android:elevation="4dp">
+
+    <TextView
+        android:id="@+id/tvMediumAlertTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="⚠️  Smoke/Gas Detected!"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#0A1D3D"
+        android:paddingBottom="12dp" />
+
+    <TextView
+        android:id="@+id/tvMediumAlertLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location: SafeFlame Site"
+        android:textSize="18sp"
+        android:textColor="#0A1D3D"
+        android:paddingBottom="12dp" />
+
+    <TextView
+        android:id="@+id/tvMediumAlertMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Smoke/Gas has been detected. Please check the area."
+        android:textSize="16sp"
+        android:textColor="#0A1D3D"
+        android:paddingBottom="16dp" />
+
+    <Button
+        android:id="@+id/btnMediumAlertAcknowledge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Acknowledge Alert"
+        android:backgroundTint="#FF6B00"
+        android:textColor="#FFF1D6"
+        android:padding="12dp" />
+
+</LinearLayout>
+
+

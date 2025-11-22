@@ -13,11 +13,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.*;
 
 import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
@@ -43,10 +40,12 @@ public class EmergencyMapActivity extends AppCompatActivity {
 
     private boolean incidentLogged = false;
     private boolean incidentActive = false;
-    private boolean locationReady = false;
 
     private GeoPoint homePoint = null;
     private Marker homeMarker = null;
+
+    // Track previous state to avoid repeated triggers
+    private String previousAlertLevel = "SAFE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +79,7 @@ public class EmergencyMapActivity extends AppCompatActivity {
         scaleBar.setAlignBottom(true);
         map.getOverlays().add(scaleBar);
 
-        //  fetch location
+        // Fetch home location asynchronously
         DatabaseReference homeRef = FirebaseDatabase.getInstance().getReference("Location");
         homeRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -91,7 +90,6 @@ public class EmergencyMapActivity extends AppCompatActivity {
 
                 if (homeLat != null && homeLng != null) {
                     homePoint = new GeoPoint(homeLat, homeLng);
-                    locationReady = true;
 
                     if (homeMarker != null) map.getOverlays().remove(homeMarker);
                     homeMarker = new Marker(map);
@@ -100,7 +98,7 @@ public class EmergencyMapActivity extends AppCompatActivity {
                     homeMarker.setTitle("🏠 Home");
                     map.getOverlays().add(homeMarker);
 
-                    tvLocation.setText(homeAddress != null ? homeAddress : "Home location set");
+                    tvLocation.setText(homeAddress != null ? homeAddress : "Lat: " + homeLat + ", Lng: " + homeLng);
 
                     map.post(() -> {
                         float zoomLevel = getDynamicZoomLevel();
@@ -109,7 +107,6 @@ public class EmergencyMapActivity extends AppCompatActivity {
                         map.invalidate();
                     });
                 } else {
-                    locationReady = false;
                     tvLocation.setText("Home location not set");
                 }
             }
@@ -120,7 +117,7 @@ public class EmergencyMapActivity extends AppCompatActivity {
             }
         });
 
-        // sensor listener
+        // Sensor listener
         DatabaseReference sensorRef = FirebaseDatabase.getInstance().getReference("SensorData");
         sensorRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -132,7 +129,11 @@ public class EmergencyMapActivity extends AppCompatActivity {
                 boolean fireDetected = (smokeDigital != null && smokeDigital == 0)
                         || (flameDigital != null && flameDigital == 0);
 
-                if (fireDetected && locationReady) {
+                if (alertLevel == null) return;
+
+                previousAlertLevel = alertLevel;
+
+                if (fireDetected && "HIGH".equalsIgnoreCase(alertLevel)) {
                     tvAlertMessage.setVisibility(View.VISIBLE);
                     firePulse.setVisibility(View.VISIBLE);
                     bottomPanel.setVisibility(View.VISIBLE);
@@ -140,17 +141,12 @@ public class EmergencyMapActivity extends AppCompatActivity {
                     incidentActive = true;
 
                     if (!incidentLogged) {
-                        logIncident(tvLocation.getText().toString(), "active", alertLevel != null ? alertLevel : "Unknown");
+                        logIncident(tvLocation.getText().toString(), "active", "HIGH");
                         incidentLogged = true;
                     }
-                } else {
-                    if (!incidentActive) {
-                        tvAlertMessage.setVisibility(View.GONE);
-                        firePulse.setVisibility(View.GONE);
-                        bottomPanel.setVisibility(View.GONE);
-                        incidentLogged = false;
-                    }
                 }
+                // IMPORTANT CHANGE: Do not auto-hide when SAFE.
+                // Panel stays visible until user presses "Mark Resolved".
             }
 
             @Override
@@ -161,6 +157,7 @@ public class EmergencyMapActivity extends AppCompatActivity {
 
         btnMarkResolved.setOnClickListener(v -> markResolved());
 
+        // Initially hidden until HIGH alert
         tvAlertMessage.setVisibility(View.GONE);
         firePulse.setVisibility(View.GONE);
         bottomPanel.setVisibility(View.GONE);
@@ -180,8 +177,15 @@ public class EmergencyMapActivity extends AppCompatActivity {
         Map<String, Object> log = new HashMap<>();
         log.put("location", location);
         log.put("status", status);
-        log.put("alertLevel", alertLevel);
+        log.put("alertLevel", alertLevel != null ? alertLevel : "Unknown");
         log.put("timestamp", timestamp);
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        if (auth.getCurrentUser() != null) {
+            log.put("userId", auth.getCurrentUser().getUid());
+        } else {
+            log.put("userId", "anonymous");
+        }
 
         logsRef.push().setValue(log);
     }
@@ -191,16 +195,56 @@ public class EmergencyMapActivity extends AppCompatActivity {
         ref.setValue("resolved");
         Toast.makeText(this, "Incident marked as resolved", Toast.LENGTH_SHORT).show();
 
-        logIncident(tvLocation.getText().toString(), "resolved", "None");
+        DatabaseReference sensorRef = FirebaseDatabase.getInstance().getReference("SensorData");
+        sensorRef.child("AlertLevel").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                String alertLevel = snapshot.getValue(String.class);
+                logIncident(tvLocation.getText().toString(), "resolved", alertLevel != null ? alertLevel : "Unknown");
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                logIncident(tvLocation.getText().toString(), "resolved", "Unknown");
+            }
+        });
 
         incidentLogged = false;
         incidentActive = false;
 
-        // Redirect to Dashboard
-        Intent intent = new Intent(EmergencyMapActivity.this, DashboardActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-        finish();
+        tvAlertMessage.setVisibility(View.GONE);
+        firePulse.setVisibility(View.GONE);
+        bottomPanel.setVisibility(View.GONE);
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        if (auth.getCurrentUser() != null) {
+            String uid = auth.getCurrentUser().getUid();
+            DatabaseReference roleRef = FirebaseDatabase.getInstance().getReference("UserProfile").child(uid).child("role");
+
+            roleRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    String role = snapshot.getValue(String.class);
+                    Intent intent;
+                    if ("admin".equalsIgnoreCase(role)) {
+                        intent = new Intent(EmergencyMapActivity.this, DashboardActivity.class);
+                    } else {
+                        intent = new Intent(EmergencyMapActivity.this, UserDashboardActivity.class);
+                    }
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
+                }
+
+                @Override
+                public void onCancelled(DatabaseError error) {
+                    Intent intent = new Intent(EmergencyMapActivity.this, UserDashboardActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+        }
     }
 
     @Override
@@ -215,11 +259,3 @@ public class EmergencyMapActivity extends AppCompatActivity {
         map.onPause();
     }
 }
-
-
-
-
-
-
-
-

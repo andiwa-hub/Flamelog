@@ -19,7 +19,6 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
     <!-- ✅ Telephony and Bluetooth (as you had) -->
-    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.BLUETOOTH" android:maxSdkVersion="30" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" android:maxSdkVersion="30" />
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
@@ -58,9 +57,8 @@
         </provider>
 
         <!-- ✅ Activities -->
-        <activity android:name=".Incident" android:exported="false" />
+
         <activity android:name=".EmergencyMapActivity" android:exported="false" />
-        <activity android:name=".AlertDialogActivity" android:exported="false" />
         <activity android:name=".LoginActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -74,6 +72,7 @@
         <activity android:name=".EditProfileActivity" android:exported="false" />
         <activity android:name=".DashboardActivity" android:exported="false" />
         <activity android:name=".UserDashboardActivity" android:exported="false" />
+        <activity android:name=".HazardAlert" android:exported="false" />
         <activity android:name=".RegisteredUsersActivity" android:exported="false" />
         <activity android:name=".PushNotifFireAlertMessagingService" android:exported="false" />
         <activity android:name=".RegisterActivity" android:exported="false" />

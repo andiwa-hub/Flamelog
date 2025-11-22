@@ -7,29 +7,42 @@
     android:background="#1A2B4C"
     android:layout_marginBottom="8dp">
 
+    <!-- Alert Level -->
     <TextView
-        android:id="@+id/tvLocation"
+        android:id="@+id/tvLevel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Location"
-        android:textColor="#FFFFFF"
+        android:text="Level: MEDIUM"
+        android:textColor="#FF9800"
         android:textSize="18sp"
         android:textStyle="bold" />
 
+    <!-- Location -->
+    <TextView
+        android:id="@+id/tvAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Address: SafeFlame Site"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:layout_marginTop="2dp" />
+
+    <!-- Status -->
     <TextView
         android:id="@+id/tvStatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Status"
+        android:text="Status: Acknowledged"
         android:textColor="#FFB300"
         android:textSize="16sp"
         android:layout_marginTop="4dp" />
 
+    <!-- Timestamp -->
     <TextView
         android:id="@+id/tvTimestamp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Timestamp"
+        android:text="Time: Nov 22, 2025, 12:34 PM"
         android:textColor="#AAAAAA"
         android:textSize="14sp"
         android:layout_marginTop="2dp" />

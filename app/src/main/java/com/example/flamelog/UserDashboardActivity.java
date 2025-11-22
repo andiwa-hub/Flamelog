@@ -21,12 +21,14 @@ public class UserDashboardActivity extends AppCompatActivity {
     private TextView tvAppName, tvTemperature, tvSmoke, tvFlame;
     private Button btnLogs, btnSettings;
     private Animation blinkAnim;
-    private boolean emergencyScreenShown = false; // ✅ prevent multiple launches
+    private boolean emergencyScreenShown = false;
+
+    private String previousAlertLevel = "SAFE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_activity_dashboard); // use the user XML layout
+        setContentView(R.layout.user_activity_dashboard);
 
         tvAppName = findViewById(R.id.tvAppName);
         tvTemperature = findViewById(R.id.tvTemperature);
@@ -37,22 +39,17 @@ public class UserDashboardActivity extends AppCompatActivity {
         btnSettings = findViewById(R.id.btnSettings);
 
         blinkAnim = AnimationUtils.loadAnimation(this, R.anim.blink);
-
         tvAppName.startAnimation(blinkAnim);
 
         btnLogs.setOnClickListener(v -> openLogs());
         btnSettings.setOnClickListener(v -> openSettings());
 
-        // initializes sensor readings
         updateSensorValues(27, "Normal", "Safe");
 
-        // fetch all sensor data from firebase
         DatabaseReference sensorRef = FirebaseDatabase.getInstance().getReference("SensorData");
-
         sensorRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-
                 Double temperature = snapshot.child("Temperature").getValue(Double.class);
                 int temp = temperature != null ? temperature.intValue() : 0;
 
@@ -62,23 +59,28 @@ public class UserDashboardActivity extends AppCompatActivity {
                 Integer flameDigital = snapshot.child("FlameDigital").getValue(Integer.class);
                 String flameStatus = (flameDigital != null && flameDigital == 0) ? "Detected" : "Safe";
 
-                // update UI
+                String alertLevel = snapshot.child("AlertLevel").getValue(String.class);
+                if (alertLevel == null) alertLevel = "SAFE";
+
                 updateSensorValues(temp, smokeStatus, flameStatus);
 
-                // launches EmergencyMapActivity when a ahzard is detected
-                boolean fireDetected = (smokeDigital != null && smokeDigital == 0)
-                        || (flameDigital != null && flameDigital == 0);
+                // ✅ Only react when alert level changes
+                if (!alertLevel.equalsIgnoreCase(previousAlertLevel)) {
+                    previousAlertLevel = alertLevel;
 
-                if (fireDetected && !emergencyScreenShown) {
-                    emergencyScreenShown = true;
-                    Intent intent = new Intent(UserDashboardActivity.this, EmergencyMapActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                }
-
-                //  reset flag when hazard clears
-                if (!fireDetected) {
-                    emergencyScreenShown = false;
+                    if ("MEDIUM".equalsIgnoreCase(alertLevel) && !emergencyScreenShown) {
+                        emergencyScreenShown = true;
+                        Intent intent = new Intent(UserDashboardActivity.this, HazardAlert.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                    } else if ("HIGH".equalsIgnoreCase(alertLevel) && !emergencyScreenShown) {
+                        emergencyScreenShown = true;
+                        Intent intent = new Intent(UserDashboardActivity.this, EmergencyMapActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                    } else if ("SAFE".equalsIgnoreCase(alertLevel) || "LOW".equalsIgnoreCase(alertLevel)) {
+                        emergencyScreenShown = false;
+                    }
                 }
             }
 
@@ -89,7 +91,6 @@ public class UserDashboardActivity extends AppCompatActivity {
         });
     }
 
-    // update sensor readings
     public void updateSensorValues(int temperature, String smokeStatus, String flameStatus) {
         tvTemperature.setText(temperature + "°C");
         tvSmoke.setText(smokeStatus);
@@ -108,13 +109,11 @@ public class UserDashboardActivity extends AppCompatActivity {
     }
 
     private void openLogs() {
-        Intent intent = new Intent(UserDashboardActivity.this, LogActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(UserDashboardActivity.this, LogActivity.class));
     }
 
     private void openSettings() {
-        Intent intent = new Intent(UserDashboardActivity.this, SettingsActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(UserDashboardActivity.this, SettingsActivity.class));
     }
 
     @Override
@@ -127,6 +126,7 @@ public class UserDashboardActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         tvAppName.startAnimation(blinkAnim);
+        emergencyScreenShown = false;
     }
 }
 
