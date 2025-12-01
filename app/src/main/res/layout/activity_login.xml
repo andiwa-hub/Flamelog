@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
     android:padding="24dp"
-    android:background="#0A1D3D"
-    tools:context=".LoginActivity">
+    android:background="@color/bg_main">
 
+    <!-- App Title -->
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="60dp"
-        android:shadowColor="#FF6B00"
+        android:shadowColor="@color/text_accent"
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="8"
         android:text="SafeFlame"
-        android:textColor="#FFB300"
+        android:textColor="@color/text_accent"
         android:textSize="40sp"
         android:textStyle="bold" />
 
+    <!-- Info Text -->
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="2dp"
         android:text="Enter your info to login."
-        android:textColor="#FF6B00"
+        android:textColor="@color/text_primary"
         android:textSize="14sp" />
 
     <TextView
@@ -38,65 +39,66 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:text="or get started with a new account."
-        android:textColor="#FF6B00"
+        android:textColor="@color/text_primary"
         android:textSize="14sp" />
 
+    <!-- Email Input -->
     <EditText
         android:id="@+id/emailInput"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/btn_emergency"
-        android:backgroundTint="#FFB300"
+        android:backgroundTint="@color/btn_bg"
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:padding="12dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#808080" />
+        android:textColor="@color/text_primary"
+        android:textColorHint="@color/text_secondary" />
 
+    <!-- Password Input -->
     <EditText
         android:id="@+id/passwordInput"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginBottom="28dp"
-        android:background="@drawable/btn_emergency"
-        android:backgroundTint="#FFB300"
+        android:backgroundTint="@color/btn_bg"
         android:hint="Password"
         android:inputType="textPassword"
         android:padding="12dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#808080" />
+        android:textColor="@color/text_primary"
+        android:textColorHint="@color/text_secondary" />
 
+    <!-- Login Button -->
     <Button
         android:id="@+id/loginButton"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:text="Login"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/btn_text"
         android:textStyle="bold"
         android:layout_marginBottom="16dp"
         android:elevation="8dp"
-        android:background="@drawable/card_bg"
-        android:backgroundTint="#00B8D4" />
+        android:backgroundTint="@color/text_accent" />
 
-    <!-- 🔧 New Forgot Password link -->
+    <!-- Forgot Password Link -->
     <TextView
         android:id="@+id/forgotPasswordLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Forgot Password?"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/text_accent"
         android:textStyle="bold"
         android:layout_marginBottom="20dp"
         android:textSize="14sp" />
 
+    <!-- Register Link -->
     <TextView
         android:id="@+id/registerLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Don't have an account? Register"
-        android:textColor="#FF6B00"
+        android:textColor="@color/text_accent"
         android:textSize="14sp" />
 
 </LinearLayout>

@@ -3,56 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0A1D3D"
+    android:background="@color/bg_main"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="24dp">
 
-    <!-- Neon Fire Logo -->
+
     <ImageView
         android:id="@+id/logoImage"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="313dp"
+        android:layout_height="378dp"
         android:layout_marginBottom="16dp"
         android:alpha="0.9"
         android:contentDescription="App Logo"
-        android:src="@drawable/ic_fire"
-        app:tint="#FFB300" />
+        android:src="@drawable/ic_logo" />
 
-    <!-- Welcome Title -->
-    <TextView
-        android:id="@+id/welcomeTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:shadowColor="#FFB600"
-        android:shadowDx="0"
-        android:shadowDy="0"
-        android:shadowRadius="8"
-        android:text="Welcome to SafeFlame!"
-        android:textColor="#FFB300"
-        android:textSize="24sp"
-        android:textStyle="bold" />
 
-    <!-- Subtitle -->
-    <TextView
-        android:id="@+id/subTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:text="Smart Fire Detection &amp; Alert System"
-        android:textColor="#FF6B00"
-        android:textSize="16sp" />
+
 
     <!-- Get Started Button -->
     <Button
         android:id="@+id/btnGetStarted"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#FFB300"
+        android:layout_width="213dp"
+        android:layout_height="54dp"
+        android:backgroundTint="@color/btn_bg"
         android:padding="12dp"
         android:text="Get Started"
-        android:textColor="#0A1D3D"
+        android:textColor="@color/text_primary"
         android:textSize="18sp" />
 
 </LinearLayout>

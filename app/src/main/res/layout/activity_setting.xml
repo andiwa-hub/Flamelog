@@ -1,7 +1,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0A1D3D"
+    android:background="@color/bg_main"
     android:padding="20dp">
 
     <LinearLayout
@@ -9,19 +9,17 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!-- Title -->
         <TextView
             android:id="@+id/settingsTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Settings"
-            android:textColor="#FFB300"
+            android:textColor="@color/text_accent"
             android:textSize="26sp"
             android:textStyle="bold"
             android:gravity="center"
             android:layout_marginBottom="24dp" />
-
-        <!-- Bluetooth Card -->
-
 
         <!-- Notifications -->
         <LinearLayout
@@ -38,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Enable Notifications"
-                android:textColor="#FFF1D6"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp" />
 
             <androidx.appcompat.widget.SwitchCompat
@@ -48,8 +46,8 @@
                 android:minHeight="48dp"
                 android:minWidth="48dp"
                 android:padding="8dp"
-                android:thumbTint="#FFB300"
-                android:trackTint="#FFB300"
+                android:thumbTint="@color/highlight"
+                android:trackTint="@color/highlight"
                 android:layout_marginEnd="4dp" />
         </LinearLayout>
 
@@ -68,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Enable Vibration/Sound"
-                android:textColor="#FFF1D6"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp" />
 
             <androidx.appcompat.widget.SwitchCompat
@@ -78,8 +76,8 @@
                 android:minHeight="48dp"
                 android:minWidth="48dp"
                 android:padding="8dp"
-                android:thumbTint="#FFB300"
-                android:trackTint="#FFB300"
+                android:thumbTint="@color/highlight"
+                android:trackTint="@color/highlight"
                 android:layout_marginEnd="4dp" />
         </LinearLayout>
 
@@ -96,7 +94,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Alert Sensitivity"
-                android:textColor="#FFF1D6"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp"
                 android:layout_marginBottom="8dp" />
 
@@ -104,41 +102,42 @@
                 android:id="@+id/seekBarSensitivity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:progressTint="#FFB300"
-                android:thumbTint="#FFB300"
+                android:progressTint="@color/highlight"
+                android:thumbTint="@color/highlight"
                 android:max="100"
                 android:progress="50" />
         </LinearLayout>
 
-        <!-- Profile & Logout -->
+        <!-- Edit Profile -->
         <Button
             android:id="@+id/btnEditProfile"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:text="Edit Profile"
-            android:textColor="#11284C"
-            android:backgroundTint="#FFD67C"
+            android:textColor="@color/text_primary"
+            android:backgroundTint="@color/btn_bg"
             android:textStyle="bold"
             android:layout_marginBottom="16dp"
             android:elevation="6dp" />
 
+        <!-- Set Home -->
         <Button
             android:id="@+id/btnSetHomeLocation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Set Home Location"
-            android:backgroundTint="#FF6B00"
-            android:textColor="#FFF1D6"
+            android:backgroundTint="@color/alert_medium"
+            android:textColor="@color/btn_text"
             android:textStyle="bold"/>
 
-
+        <!-- Logout -->
         <Button
             android:id="@+id/btnLogOut"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:text="Log Out"
-            android:textColor="#FFF1D6"
-            android:backgroundTint="#A00000"
+            android:textColor="@color/btn_text"
+            android:backgroundTint="@color/alert_high"
             android:textStyle="bold"
             android:layout_marginBottom="16dp"
             android:elevation="6dp" />

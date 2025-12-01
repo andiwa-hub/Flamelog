@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0A1D3D"
-    android:padding="24dp">
+    android:background="@color/bg_main"
+    android:padding="24dp"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,15 +14,15 @@
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
-        <!-- Glowing / flashing warning icon -->
+        <!-- Warning Icon -->
         <ImageView
             android:id="@+id/imgWarningIcon"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="24dp"
             android:src="@drawable/ic_warning"
             android:contentDescription="@string/warning_icon_desc"
-            app:tint="#FFD600" />
+            app:tint="@color/alert_high" />
 
         <!-- SMOKE DETECTED Title -->
         <TextView
@@ -28,14 +30,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SMOKE DETECTED"
-            android:textColor="#FFD600"
+            android:textColor="@color/alert_high"
             android:textSize="32sp"
             android:textStyle="bold"
-            android:shadowColor="#A64B00"
+            android:shadowColor="@color/alert_medium"
             android:shadowDx="0"
             android:shadowDy="0"
-            android:shadowRadius="12"
-            android:layout_marginBottom="12dp" />
+            android:shadowRadius="8"
+            android:layout_marginBottom="16dp"
+            android:gravity="center" />
 
         <!-- Alert Level -->
         <TextView
@@ -43,30 +46,39 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ALERT LEVEL: MEDIUM"
-            android:textColor="#FFA000"
+            android:textColor="@color/alert_medium"
             android:textStyle="bold"
             android:textSize="22sp"
-            android:shadowColor="#DB5700"
+            android:shadowColor="@color/alert_high"
             android:shadowDx="0"
             android:shadowDy="0"
-            android:shadowRadius="10"
-            android:layout_marginBottom="20dp" />
+            android:shadowRadius="6"
+            android:layout_marginBottom="24dp"
+            android:gravity="center" />
 
-        <!-- View Location -->
-
-        <!-- Mark Resolved -->
+        <!-- Mark Resolved Button -->
         <Button
             android:id="@+id/btnMarkResolved"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/mark_resolved"
-            android:textColor="#0A1D3D"
-            android:backgroundTint="#FFE082"
+            android:textColor="@color/text_primary"
+            android:backgroundTint="@color/value_normal"
             android:textStyle="bold"
             android:padding="14dp"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="16dp" />
 
-        <!-- Send Alert Message -->
+        <!-- Send Alert Message Button -->
+        <Button
+            android:id="@+id/btnSendAlert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SEND ALERT MESSAGE"
+            android:textColor="@color/text_primary"
+            android:backgroundTint="@color/alert_medium"
+            android:textStyle="bold"
+            android:padding="14dp"
+            android:layout_marginBottom="16dp" />
 
     </LinearLayout>
 </ScrollView>

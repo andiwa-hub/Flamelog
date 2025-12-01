@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0A1D3D"
+    android:background="@color/bg_main"
     android:padding="16dp">
 
     <!-- Title -->
@@ -14,7 +14,7 @@
         android:layout_marginBottom="16dp"
         android:gravity="center"
         android:text="Incident Log"
-        android:textColor="#FFB300"
+        android:textColor="@color/text_accent"
         android:textSize="26sp"
         android:textStyle="bold" />
 
@@ -26,7 +26,7 @@
         android:layout_below="@id/tvIncidentLogTitle"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="12dp"
-        android:backgroundTint="#FF6B00"
+        android:backgroundTint="@color/highlight"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:spinnerMode="dropdown" />
@@ -51,11 +51,11 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
         android:contentDescription="Export Logs"
-        app:backgroundTint="#E6B800"
+        app:backgroundTint="@color/value_normal"
         app:srcCompat="@android:drawable/ic_menu_save"
-        app:tint="#000000" />
+        app:tint="@color/text_primary" />
 
-    <!-- Clear Logs Button (Admin only) -->
+    <!-- Clear Logs Button -->
     <Button
         android:id="@+id/btnClearLogs"
         android:layout_width="wrap_content"
@@ -64,22 +64,22 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
         android:text="Clear Logs"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#D32F2F"
+        android:textColor="@color/btn_text"
+        android:backgroundTint="@color/alert_high"
         android:drawableLeft="@android:drawable/ic_menu_delete"
         android:paddingLeft="12dp"
         android:paddingRight="12dp" />
 
-    <!-- ✅ Row Template for RecyclerView -->
+    <!-- Recycler Row Template -->
     <LinearLayout
         android:id="@+id/item_log_template"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="12dp"
-        android:background="#1A2B4C"
+        android:background="@color/bg_card"
         android:layout_marginBottom="8dp"
-        android:visibility="gone"> <!-- hidden, used only as template -->
+        android:visibility="gone">
 
         <!-- Alert Level -->
         <TextView
@@ -87,7 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Level: HIGH"
-            android:textColor="#FF6B00"
+            android:textColor="@color/alert_high"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -97,7 +97,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Address: Lab 1, Los Baños"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/text_primary"
             android:textSize="16sp"
             android:layout_marginTop="2dp" />
 
@@ -107,7 +107,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Status: Resolved"
-            android:textColor="#FFB300"
+            android:textColor="@color/text_accent"
             android:textSize="16sp"
             android:layout_marginTop="4dp" />
 
@@ -117,10 +117,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Time: Nov 19, 2025, 5:24 PM"
-            android:textColor="#AAAAAA"
+            android:textColor="@color/text_secondary"
             android:textSize="14sp"
             android:layout_marginTop="2dp" />
     </LinearLayout>
 
 </RelativeLayout>
-

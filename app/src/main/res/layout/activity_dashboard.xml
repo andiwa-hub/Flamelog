@@ -1,35 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0A1D3D"
-    android:padding="20dp">
+    android:background="@color/bg_main"
+    android:fillViewport="true"
+    android:padding="16dp">
 
     <LinearLayout
         android:id="@+id/dashboardLayout"
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:gravity="center_horizontal">
 
+        <!-- App Title -->
         <TextView
             android:id="@+id/tvAppName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SafeFlame"
-            android:textColor="#FFB300"
+            android:textColor="@color/text_accent"
             android:textSize="36sp"
             android:textStyle="bold"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="8dp"
             android:fontFamily="sans-serif-medium"
-            android:layout_gravity="center"
-            android:animation="@anim/blink" />
+            android:layout_gravity="center" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Dashboard"
-            android:textColor="#FFF1D6"
+            android:textColor="@color/text_primary"
             android:textSize="18sp"
             android:layout_marginBottom="24dp" />
 
@@ -39,27 +43,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@drawable/card_bg"
+            android:background="@color/bg_card"
             android:padding="16dp"
-            android:layout_marginBottom="12dp">
+            android:layout_marginBottom="12dp"
+            android:elevation="4dp">
 
             <ImageView
-                android:src="@drawable/ic_fire"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:layout_marginEnd="12dp" />
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/ic_thermometer"
+                app:tint="@color/icon_flame" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:gravity="center_vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Temperature"
-                    android:textColor="#FFF1D6"
+                    android:textColor="@color/text_primary"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -67,8 +74,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Room"
-                    android:textColor="#FFF1D6"
-                    android:textSize="14sp" />
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp"
+                    android:layout_marginTop="2dp" />
             </LinearLayout>
 
             <TextView
@@ -76,9 +84,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="27°C"
-                android:textColor="#FFD67C"
+                android:textColor="@color/value_normal"
                 android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical" />
         </LinearLayout>
 
         <!-- Smoke -->
@@ -86,27 +95,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@drawable/card_bg"
+            android:background="@color/bg_card"
             android:padding="16dp"
-            android:layout_marginBottom="12dp">
+            android:layout_marginBottom="12dp"
+            android:elevation="4dp">
 
             <ImageView
                 android:layout_width="36dp"
                 android:layout_height="36dp"
+                android:layout_marginEnd="12dp"
                 android:src="@drawable/ic_smoke"
-                android:layout_marginEnd="12dp" />
+                app:tint="@color/icon_smoke" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:gravity="center_vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Smoke"
-                    android:textColor="#FFF1D6"
+                    android:textColor="@color/text_primary"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -114,8 +126,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Density"
-                    android:textColor="#FFF1D6"
-                    android:textSize="14sp" />
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp"
+                    android:layout_marginTop="2dp" />
             </LinearLayout>
 
             <TextView
@@ -123,9 +136,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Normal"
-                android:textColor="#FFD67C"
+                android:textColor="@color/value_normal"
                 android:textSize="22sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical" />
         </LinearLayout>
 
         <!-- Flame -->
@@ -133,27 +147,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@drawable/card_bg"
+            android:background="@color/bg_card"
             android:padding="16dp"
-            android:layout_marginBottom="12dp">
+            android:layout_marginBottom="16dp"
+            android:elevation="4dp">
 
             <ImageView
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:src="@drawable/ic_flame"
-                android:layout_marginEnd="12dp" />
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/ic_fire"
+                app:tint="@color/icon_flame" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:gravity="center_vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Flame"
-                    android:textColor="#FFF1D6"
+                    android:textColor="@color/text_primary"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -161,8 +178,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="None Detected"
-                    android:textColor="#FFF1D6"
-                    android:textSize="14sp" />
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp"
+                    android:layout_marginTop="2dp" />
             </LinearLayout>
 
             <TextView
@@ -170,9 +188,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Safe"
-                android:textColor="#FFD67C"
+                android:textColor="@color/value_normal"
                 android:textSize="22sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical" />
         </LinearLayout>
 
         <!-- Alert Levels -->
@@ -182,8 +201,9 @@
             android:orientation="horizontal"
             android:gravity="center_horizontal"
             android:weightSum="3"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="20dp">
 
+            <!-- High -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -200,11 +220,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="High"
-                    android:textColor="#A00000"
+                    android:textColor="@color/alert_high"
                     android:textSize="14sp"
                     android:layout_marginTop="4dp" />
             </LinearLayout>
 
+            <!-- Medium -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -221,11 +242,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Medium"
-                    android:textColor="#DB5700"
+                    android:textColor="@color/alert_medium"
                     android:textSize="14sp"
                     android:layout_marginTop="4dp" />
             </LinearLayout>
 
+            <!-- Low -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -242,19 +264,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Low"
-                    android:textColor="#FFD67C"
+                    android:textColor="@color/alert_low"
                     android:textSize="14sp"
                     android:layout_marginTop="4dp" />
             </LinearLayout>
         </LinearLayout>
 
-        <!-- Navigation Buttons -->
+        <!-- Footer Buttons -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="16dp"
-            android:weightSum="3">
+            android:weightSum="3"
+            android:layout_marginBottom="24dp">
 
             <Button
                 android:id="@+id/btnLogs"
@@ -262,7 +284,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Logs"
-                android:textColor="#FFF1D6"
+                android:textColor="@color/btn_text"
                 android:background="@drawable/button_bg"
                 android:layout_marginEnd="8dp" />
 
@@ -272,7 +294,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Settings"
-                android:textColor="#FFF1D6"
+                android:textColor="@color/btn_text"
                 android:background="@drawable/button_bg"
                 android:layout_marginEnd="8dp" />
 
@@ -282,22 +304,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Contacts"
-                android:textColor="#FFF1D6"
+                android:textColor="@color/btn_text"
                 android:background="@drawable/button_bg" />
+
         </LinearLayout>
-
-        <Button
-            android:id="@+id/btnRegisteredUsers"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#2196F3"
-            android:padding="14dp"
-            android:text="REGISTERED USERS"
-            android:textColor="#FFF1D6"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
 
     </LinearLayout>
 </ScrollView>
-

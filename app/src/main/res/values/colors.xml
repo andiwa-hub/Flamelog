@@ -1,24 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Backgrounds -->
+    <color name="bg_main">#FFF8F0</color>
+    <color name="bg_card">#FFEDE0</color>
 
-    <resources>
-    <color name="bg_color1">#0F2027</color>
-    <color name="bg_color2">#203A43</color>
-    <color name="bg_color3">#2C5364</color>
+    <!-- Text -->
+    <color name="text_primary">#4B2E2E</color>
+    <color name="text_secondary">#7A5A50</color>
+    <color name="text_accent">#FF7F50</color>
+    <color name="text_muted">#777777</color>
+    <color name="text_error">#A00000</color>
+    <color name="text_highlight">#FFD67C</color>
 
-    <color name="app_background">#0A1D3D</color>
-    <color name="app_background_light">#11284C</color>
-    <color name="app_alert_red">#A00000</color>
+    <!-- Values -->
+    <color name="value_normal">#FF8C42</color>
+    <color name="value_warning">#FFA500</color>
 
-    <color name="sf_background">#11284C</color>
-    <color name="sf_navy">#0A1D3D</color>
-    <color name="sf_fire_orange">#FF6B00</color>
-    <color name="sf_warm_orange">#FFA000</color>
-    <color name="sf_amber">#FFB300</color>
-    <color name="sf_yellow_soft">#FFD67C</color>
-    <color name="sf_red_deep">#A00000</color>
-    <color name="sf_cream">#FFF1D6</color>
+    <!-- Alerts -->
+    <color name="alert_high">#FF4500</color>
+    <color name="alert_medium">#FFA500</color>
+    <color name="alert_low">#32CD32</color>
+    <color name="alert_success">#4CAF50</color>
+    <color name="alert_danger">#F44336</color>
+    <color name="alert_warning">#FF6B00</color>
 
+    <!-- Buttons -->
+    <color name="btn_text">#FFFFFF</color>
+    <color name="btn_bg">#FF7F50</color>
+    <color name="btn_pressed">#FF6347</color>
+    <color name="btn_text_dark">#0A1D3D</color>
 
+    <!-- Icons -->
+    <color name="icon_flame">#FF6347</color>
+    <color name="icon_smoke">#A9A9A9</color>
+
+    <!-- Inputs -->
+    <color name="input_bg">#FFF1E6</color>
+    <color name="input_hint">#7A5A50</color>
+
+    <!-- Cards & Panels -->
+    <color name="panel_bg_dark">#102342</color>
+    <color name="panel_border">#FFB300</color>
+
+    <!-- Misc / accents -->
+    <color name="highlight">#FFB347</color>
 </resources>
-
-

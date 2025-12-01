@@ -3,9 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="12dp"
-    android:background="#1A2B4C"
-    android:layout_marginBottom="8dp">
+    android:padding="16dp"
+    android:background="@color/bg_card"
+    android:layout_marginBottom="10dp">
 
     <!-- Alert Level -->
     <TextView
@@ -13,8 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Level: MEDIUM"
-        android:textColor="#FF9800"
-        android:textSize="18sp"
+        android:textColor="@color/alert_medium"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <!-- Location -->
@@ -23,9 +23,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Address: SafeFlame Site"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:layout_marginTop="2dp" />
+        android:textColor="@color/text_primary"
+        android:textSize="18sp"
+        android:layout_marginTop="4dp" />
 
     <!-- Status -->
     <TextView
@@ -33,9 +33,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Status: Acknowledged"
-        android:textColor="#FFB300"
-        android:textSize="16sp"
-        android:layout_marginTop="4dp" />
+        android:textColor="@color/text_accent"
+        android:textSize="18sp"
+        android:layout_marginTop="6dp" />
 
     <!-- Timestamp -->
     <TextView
@@ -43,7 +43,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Time: Nov 22, 2025, 12:34 PM"
-        android:textColor="#AAAAAA"
-        android:textSize="14sp"
-        android:layout_marginTop="2dp" />
+        android:textColor="@color/text_secondary"
+        android:textSize="16sp"
+        android:layout_marginTop="4dp" />
+
 </LinearLayout>
