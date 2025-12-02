@@ -5,48 +5,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_main"
-    android:fillViewport="true"
+
     android:padding="16dp">
 
     <LinearLayout
         android:id="@+id/dashboardLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-        <!-- App Title -->
+
         <TextView
             android:id="@+id/tvAppName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SafeFlame"
-            android:textColor="@color/text_accent"
-            android:textSize="36sp"
-            android:textStyle="bold"
+            android:layout_gravity="center"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="8dp"
             android:fontFamily="sans-serif-medium"
-            android:layout_gravity="center" />
+            android:text="SafeFlame"
+            android:textColor="@color/text_accent"
+            android:textSize="36sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
             android:text="Dashboard"
             android:textColor="@color/text_primary"
-            android:textSize="18sp"
-            android:layout_marginBottom="24dp" />
+            android:textSize="18sp" />
 
-        <!-- Sensor Cards -->
-        <!-- Temperature -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@color/bg_card"
-            android:padding="16dp"
             android:layout_marginBottom="12dp"
-            android:elevation="4dp">
+            android:background="@color/bg_card"
+            android:elevation="4dp"
+            android:orientation="horizontal"
+            android:padding="16dp">
 
             <ImageView
                 android:layout_width="36dp"
@@ -58,9 +57,9 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_weight="1"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -73,32 +72,32 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
                     android:text="Room"
                     android:textColor="@color/text_secondary"
-                    android:textSize="14sp"
-                    android:layout_marginTop="2dp" />
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/tvTemperature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:text="27°C"
                 android:textColor="@color/value_normal"
                 android:textSize="24sp"
-                android:textStyle="bold"
-                android:layout_gravity="center_vertical" />
+                android:textStyle="bold" />
         </LinearLayout>
 
-        <!-- Smoke -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@color/bg_card"
-            android:padding="16dp"
             android:layout_marginBottom="12dp"
-            android:elevation="4dp">
+            android:background="@color/bg_card"
+            android:elevation="4dp"
+            android:orientation="horizontal"
+            android:padding="16dp">
 
             <ImageView
                 android:layout_width="36dp"
@@ -110,9 +109,9 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_weight="1"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -125,32 +124,32 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
                     android:text="Density"
                     android:textColor="@color/text_secondary"
-                    android:textSize="14sp"
-                    android:layout_marginTop="2dp" />
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/tvSmoke"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:text="Normal"
                 android:textColor="@color/value_normal"
                 android:textSize="22sp"
-                android:textStyle="bold"
-                android:layout_gravity="center_vertical" />
+                android:textStyle="bold" />
         </LinearLayout>
 
         <!-- Flame -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@color/bg_card"
-            android:padding="16dp"
             android:layout_marginBottom="16dp"
-            android:elevation="4dp">
+            android:background="@color/bg_card"
+            android:elevation="4dp"
+            android:orientation="horizontal"
+            android:padding="16dp">
 
             <ImageView
                 android:layout_width="36dp"
@@ -162,9 +161,9 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_weight="1"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -177,39 +176,39 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
                     android:text="None Detected"
                     android:textColor="@color/text_secondary"
-                    android:textSize="14sp"
-                    android:layout_marginTop="2dp" />
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/tvFlame"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:text="Safe"
                 android:textColor="@color/value_normal"
                 android:textSize="22sp"
-                android:textStyle="bold"
-                android:layout_gravity="center_vertical" />
+                android:textStyle="bold" />
         </LinearLayout>
 
         <!-- Alert Levels -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_marginBottom="20dp"
             android:gravity="center_horizontal"
-            android:weightSum="3"
-            android:layout_marginBottom="20dp">
+            android:orientation="horizontal"
+            android:weightSum="3">
 
             <!-- High -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <View
                     android:layout_width="24dp"
@@ -219,10 +218,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
                     android:text="High"
                     android:textColor="@color/alert_high"
-                    android:textSize="14sp"
-                    android:layout_marginTop="4dp" />
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <!-- Medium -->
@@ -230,8 +229,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <View
                     android:layout_width="24dp"
@@ -241,10 +240,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
                     android:text="Medium"
                     android:textColor="@color/alert_medium"
-                    android:textSize="14sp"
-                    android:layout_marginTop="4dp" />
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <!-- Low -->
@@ -252,8 +251,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <View
                     android:layout_width="24dp"
@@ -263,10 +262,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
                     android:text="Low"
                     android:textColor="@color/alert_low"
-                    android:textSize="14sp"
-                    android:layout_marginTop="4dp" />
+                    android:textSize="14sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -274,40 +273,50 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
             android:orientation="horizontal"
-            android:weightSum="3"
-            android:layout_marginBottom="24dp">
+            android:weightSum="3">
 
             <Button
                 android:id="@+id/btnLogs"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
                 android:layout_weight="1"
+                android:backgroundTint="@color/btn_bg"
                 android:text="Logs"
-                android:textColor="@color/btn_text"
-                android:background="@drawable/button_bg"
-                android:layout_marginEnd="8dp" />
+                android:textColor="@color/btn_text" />
 
             <Button
                 android:id="@+id/btnSettings"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
                 android:layout_weight="1"
+                android:backgroundTint="@color/btn_bg"
                 android:text="Settings"
-                android:textColor="@color/btn_text"
-                android:background="@drawable/button_bg"
-                android:layout_marginEnd="8dp" />
+                android:textColor="@color/btn_text" />
 
             <Button
                 android:id="@+id/btnContacts"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:backgroundTint="@color/btn_bg"
                 android:text="Contacts"
-                android:textColor="@color/btn_text"
-                android:background="@drawable/button_bg" />
+                android:textColor="@color/btn_text" />
 
         </LinearLayout>
+
+        <!-- ADD REGISTERED USERS BUTTON HERE -->
+        <Button
+            android:id="@+id/btnRegisteredUsers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/btn_bg"
+            android:text="Registered Users"
+            android:textColor="@color/btn_text" />
 
     </LinearLayout>
 </ScrollView>

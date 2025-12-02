@@ -28,7 +28,7 @@
                 android:textSize="28sp"
                 android:textStyle="bold" />
 
-            <!-- Full Name -->
+
             <EditText
                 android:id="@+id/editFullName"
                 android:layout_width="match_parent"
@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/alert_high"
                 android:text="Cancel"
-                android:textColor="@color/text_secondary"
+                android:textColor="@color/btn_text"
                 android:textStyle="bold" />
 
         </LinearLayout>

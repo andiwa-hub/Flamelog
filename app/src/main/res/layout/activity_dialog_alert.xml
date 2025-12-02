@@ -14,7 +14,7 @@
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
-        <!-- Warning Icon -->
+
         <ImageView
             android:id="@+id/imgWarningIcon"
             android:layout_width="120dp"
@@ -24,7 +24,7 @@
             android:contentDescription="@string/warning_icon_desc"
             app:tint="@color/alert_high" />
 
-        <!-- SMOKE DETECTED Title -->
+
         <TextView
             android:id="@+id/tvFireDetected"
             android:layout_width="wrap_content"
@@ -40,7 +40,7 @@
             android:layout_marginBottom="16dp"
             android:gravity="center" />
 
-        <!-- Alert Level -->
+
         <TextView
             android:id="@+id/tvAlertLevel"
             android:layout_width="wrap_content"
@@ -56,7 +56,7 @@
             android:layout_marginBottom="24dp"
             android:gravity="center" />
 
-        <!-- Mark Resolved Button -->
+
         <Button
             android:id="@+id/btnMarkResolved"
             android:layout_width="match_parent"
@@ -68,7 +68,7 @@
             android:padding="14dp"
             android:layout_marginBottom="16dp" />
 
-        <!-- Send Alert Message Button -->
+
         <Button
             android:id="@+id/btnSendAlert"
             android:layout_width="match_parent"

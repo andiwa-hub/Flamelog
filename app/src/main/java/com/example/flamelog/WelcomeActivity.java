@@ -18,16 +18,13 @@ public class WelcomeActivity extends AppCompatActivity {
 
         // Link UI
         ImageView logoImage = findViewById(R.id.logoImage);
-        TextView welcomeTitle = findViewById(R.id.welcomeTitle);
-        TextView subTitle = findViewById(R.id.subTitle);
+
         Button btnGetStarted = findViewById(R.id.btnGetStarted);
 
         // Load neon pulse animation
         Animation neonPulse = AnimationUtils.loadAnimation(this, R.anim.neon_pulse);
 
-        // Start animation on logo and title
-        logoImage.startAnimation(neonPulse);
-        welcomeTitle.startAnimation(neonPulse);
+
 
         // Start animation on button
         btnGetStarted.startAnimation(neonPulse);
